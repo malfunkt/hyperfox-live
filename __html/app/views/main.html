@@ -1,0 +1,108 @@
+<div class="alert alert-danger" role="alert" ng-if="apierror">{{apierror}}</div>
+<div class="alert alert-warning" role="alert" ng-if="!requests || requests.length == 0">No data to show yet.</div>
+
+<div class="content-fixed">
+
+  <div class="data-rows">
+    <div id="requests-wrapper">
+
+      <table class="table table-striped sticky-header" ng-if="requests.length > 0">
+        <thead>
+          <tr>
+            <th class="th-date">Date</th>
+            <th class="th-method">Method</th>
+            <th class="th-origin">Origin</th>
+            <th class="th-host">Destination</th>
+            <th class="th-path">Path</th>
+            <th class="th-status">Status</th>
+            <th class="th-size">Size</th>
+            <th class="th-type">Type</th>
+            <th class="th-time">Time</th>
+            <th class="th-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="request in requests">
+            <td class="td-date">
+              <small class="glyphicon glyphicon-time"></small>
+              <span title="{{request.date_start | date: 'MMM d, y H:mm:ss'}}" tooltip>
+              {{request.date_start | date: 'H:mm:ss'}}
+              </span>
+            </td>
+            <td class="td-method">{{request.method}}</td>
+            <td class="td-origin">
+              <span title="{{request.origin}}">{{request.origin | origin}}</span>
+            </td>
+            <td class="td-host">
+              {{ request.host }}
+            </td>
+            <td class="td-path" title="{{request.path}}">
+              <a href="{{request.url}}" target="_blank"><span ng-if="request.scheme == 'http'" class="glyphicon glyphicon-globe" aria-hidden="true"></span><span ng-if="request.scheme == 'https'" class="glyphicon glyphicon-lock" aria-hidden="true"></span></a>
+              {{request.path}}
+            </td>
+            <td class="td-status">{{request.status}}</td>
+            <td class="td-size">{{request.content_length | size}}</td>
+            <td class="td-type">
+              <span title="{{request.content_type}}">{{request.content_type | mime}}</span>
+            </td>
+            <td class="td-time">{{request.time_taken | time}}</td>
+            <td class="td-actions">
+              <a ng-if="request.content_length > 0" class="btn btn-success" href="{{ '/download?id=' + request.id | api_request }}" target="_blank">
+                <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+              </a>
+              <a class="btn btn-info" href="/#/details/{{ request.id }}" target="_blank">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="requests-paginator" ng-if="totalPages > 1">
+
+    <ul class="pagination">
+
+      <li class="{{ currentPage == 1 ? 'disabled' : ''}}">
+        <a href="/#/1"><span aria-hidden="true">&laquo; First</span></a>
+      </li>
+
+      <li ng-if="currentPage <= 1" class="disabled">
+        <span aria-hidden="true">Previous</span>
+      </li>
+
+      <li ng-if="currentPage > 1">
+        <a href="/#/{{currentPage-1}}">
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
+
+      <li class="disabled" ng-if="currentPage - 3 > 1">
+        <span aria-hidden="true">&hellip;</span>
+      </li>
+
+      <li ng-repeat="page in [] | pageRange:currentPage:totalPages:6" class="{{page == currentPage ? 'active' : ''}}">
+        <a href="/#/{{page}}">{{page}}</a>
+      </li>
+
+      <li class="disabled" ng-if="currentPage + 3 < totalPages">
+        <span aria-hidden="true">&hellip;</span>
+      </li>
+
+      <li ng-if="currentPage < totalPages">
+        <a href="/#/{{currentPage + 1}}">Next</a>
+      </li>
+
+      <li ng-if="currentPage == totalPages" class="disabled">
+        <span aria-hidden="true">Next</span>
+      </li>
+
+      <li class="{{ currentPage == totalPages ? 'disabled' : ''}}">
+        <a href="/#/{{totalPages}}">Last <span aria-hidden="true">&raquo;</span></a>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
