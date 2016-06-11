@@ -1,6 +1,0 @@
-node_modules
-*.swp
-dist
-.tmp
-.sass-cache
-bower_components
