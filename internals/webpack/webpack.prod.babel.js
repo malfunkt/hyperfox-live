@@ -30,6 +30,7 @@ module.exports = require('./webpack.base.babel')({
 
   // In production, we minify our CSS with cssnano
   postcssPlugins: [
+    require('precss')(),
     postcssFocus(),
     cssnext({
       browsers: ['last 2 versions', 'IE > 10']

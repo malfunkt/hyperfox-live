@@ -3,16 +3,18 @@
  *  contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react'
+import React, {PropTypes} from 'react'
+import NavigationBar from 'components/NavigationBar'
 
 export default class App extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node
+    children: PropTypes.node
   }
 
   render () {
     return (
       <div>
+        <NavigationBar />
         {this.props.children}
       </div>
     )
