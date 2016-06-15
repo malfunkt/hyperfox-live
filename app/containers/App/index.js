@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='container is-fluid is-fullheight is-marginless'>
         <NavigationBar />
         {this.props.children}
       </div>

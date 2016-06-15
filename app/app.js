@@ -17,8 +17,14 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import useScroll from 'react-router-scroll'
 import configureStore from './store'
 
+// Import Language Provider
+import LanguageProvider from 'containers/LanguageProvider'
+// Import i18n messages
+import { translationMessages } from './i18n'
+
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
-import 'sanitize.css/lib/sanitize.css'
+// import 'sanitize.css/lib/sanitize.css'
+import 'bulma/css/bulma.css'
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -42,16 +48,25 @@ const rootRoute = {
   component: App,
   childRoutes: createRoutes(store)
 }
+const render = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <LanguageProvider locale={'en'} messages={translationMessages}>
+        <Router history={history} routes={rootRoute} render={
+          // Scroll to top when going to a new page, imitating default browser behaviour
+          applyRouterMiddleware(useScroll())} />
+      </LanguageProvider>
+    </Provider>,
+    document.getElementById('app')
+  )
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history} routes={rootRoute} render={
-        // Scroll to top when going to a new page, imitating default browser behaviour
-        applyRouterMiddleware(useScroll())} />
-  </Provider>,
-  document.getElementById('app')
-)
-
+// Chunked polyfill for browsers without Intl support
+if (!window.Intl) {
+  System.import('intl').then(render)
+} else {
+  render()
+}
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed

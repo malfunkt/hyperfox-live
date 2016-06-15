@@ -1,5 +1,34 @@
+.NavigationBar{
+  &__Logo{
+    span{
+      float: left;
+    }
+    &__Live{
+      font-size: 25px;
+      position: relative;
+      top: 15px;
+      left: 3px;
+    }
+  }
+  &__Search{
+    &__Input{
+      float: right;
+      top: 15px;
+      .fa{
+        font-size: 15px !important;
+      }
+    }
+  }
+}
+
 .Logo{
   path{
-    fill: #11f;
+    fill: #ed6c63;
+    transition: fill .4s linear;
+  }
+  &:hover{
+    path{
+      fill: #DB0F2E;
+    }
   }
 }
