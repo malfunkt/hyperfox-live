@@ -1,7 +1,4 @@
-/*
- *
- * LanguageProvider
- *
+/* LanguageProvider
  * this component connects the redux state language locale to the
  * IntlProvider component and i18n messages (loaded from `app/translations`)
  */
