@@ -51,7 +51,7 @@ const rootRoute = {
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider locale={'en'} messages={translationMessages}>
+      <LanguageProvider messages={translationMessages}>
         <Router history={history} routes={rootRoute} render={
           // Scroll to top when going to a new page, imitating default browser behaviour
           applyRouterMiddleware(useScroll())} />

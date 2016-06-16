@@ -1,7 +1,7 @@
 [
   {
     "id": "hyperfox.components.NavigationBar.search.message",
-    "defaultMessage": "Search.",
-    "message": "Search."
+    "defaultMessage": "Search",
+    "message": "Search"
   }
 ]
