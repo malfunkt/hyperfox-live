@@ -1,14 +1,24 @@
-/* HomePage
- * This is the first thing users see of our App, at the '/' route
- */
+/* Logger */
 
 import React from 'react'
+import Notification from 'components/Notification'
+
+import messages from './messages'
 
 export default class HomePage extends React.Component {
 
   render () {
     return (
-      <h1>Hyperfox!</h1>
+      <div className='container'>
+        <Notification
+          alertStyle='danger'
+          message={messages.noConnected}
+        />
+        <Notification
+          alertStyle='warning'
+          message={messages.noData}
+        />
+      </div>
     )
   }
 }
