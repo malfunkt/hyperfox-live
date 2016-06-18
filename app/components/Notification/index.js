@@ -5,7 +5,7 @@ import classNames from 'classnames'
 export default class Notification extends React.Component {
   static propTypes = {
     alertStyle: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.object
   }
 
   constructor (props) {
@@ -20,7 +20,6 @@ export default class Notification extends React.Component {
       warning: 'is-warning',
       danger: 'is-danger'
     }
-
     return (
       <div className={classNames('notification', alertStyles[this.props.alertStyle])}>
         <button className='delete'></button>

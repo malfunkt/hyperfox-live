@@ -1,35 +1,31 @@
 /* Testing our NavigationBar component */
 
-import NavigationBar from '../index'
-
-import Logo from 'components/Icons/Logo'
-import styles from '../styles.css'
+import Notification from '../index'
 
 import expect from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'
 
-describe('<NavigationBar />', () => {
-  it('should render the Logo', () => {
-    const navLogo = (<Logo className={styles.Logo} width={"65px"} height={"65px"} />)
+const message = {
+  id: 'hyperfox.test',
+  description: 'Major Tom',
+  defaultMessage: 'Ground Control To Major Tom'
+}
+
+describe('<Notification />', () => {
+  it('should render the Notification with is-danger class', () => {
     const renderedComponent = shallow(
-      <NavigationBar />
+      <Notification alertStyle='danger' message={message} />
     )
-    expect(renderedComponent.contains(navLogo)).toEqual(true)
+    expect(renderedComponent.hasClass('is-danger')).toEqual(true)
   })
-
-  /* it('should adopt the className', () => {
-    const renderedComponent = shallow(<NavigationBar className='test' />)
-    expect(renderedComponent.find('a').hasClass('test')).toEqual(true)
+  it('should render the Notification with is-success class', () => {
+    const renderedComponent = shallow(
+      <Notification
+        alertStyle='success'
+        message={message}
+      />
+    )
+    expect(renderedComponent.hasClass('is-success')).toEqual(true)
   })
-
-  it('should adopt the href', () => {
-    const renderedComponent = shallow(<NavigationBar href='mxstbr.com' />)
-    expect(renderedComponent.prop('href')).toEqual('mxstbr.com')
-  })
-
-  it('should adopt the target', () => {
-    const renderedComponent = shallow(<NavigationBar target='_blank' />)
-    expect(renderedComponent.prop('target')).toEqual('_blank')
-  }) */
 })
