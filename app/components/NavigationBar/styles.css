@@ -1,19 +1,15 @@
 .NavigationBar{
+  background-color: #455a64;
+  padding: 0 10px;
   &__Logo{
-    span{
-      float: left;
-    }
     &__Live{
-      font-size: 25px;
-      position: relative;
-      top: 15px;
-      left: 3px;
+      font-size: 20px;
+      color: #fff;
+      padding: 0;
     }
   }
   &__Search{
     &__Input{
-      float: right;
-      top: 15px;
       .fa{
         font-size: 15px !important;
       }
