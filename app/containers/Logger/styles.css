@@ -1,0 +1,10 @@
+.Logger{
+  flex: 1;
+  overflow: auto;
+  &__TableHead{
+    background-color: #666;
+  }
+  &__TableBody{
+    overflow: scroll;
+  }
+}

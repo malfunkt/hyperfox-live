@@ -1,9 +1,12 @@
 /* Logger */
 
 import React from 'react'
-import Notification from 'components/Notification'
 
-import messages from './messages'
+import classNames from 'classnames'
+import styles from './styles.css'
+// import Notification from 'components/Notification'
+
+// import messages from './messages'
 
 const logs = {
   date: '12:51:12',
@@ -48,17 +51,9 @@ export default class Logger extends React.Component {
 
   render () {
     return (
-      <div className='if-fluid is-marginless'>
-        <Notification
-          alertStyle='danger'
-          message={messages.noConnected}
-        />
-        <Notification
-          alertStyle='warning'
-          message={messages.noData}
-        />
-      <table className='table'>
-          <thead>
+      <section className={classNames(styles.Logger)}>
+        <table className='table is-marginless'>
+          <thead className={styles.Logger__TableHead}>
             <tr>
               <th>Date</th>
               <th>Method</th>
@@ -72,11 +67,11 @@ export default class Logger extends React.Component {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={styles.Logger__TableBody}>
             {Array.apply(null, Array(42)).map(() => { return logs }).map(this.renderRow)}
           </tbody>
         </table>
-      </div>
+      </section>
     )
   }
 }

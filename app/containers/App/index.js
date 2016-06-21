@@ -5,6 +5,10 @@
 
 import React, {PropTypes} from 'react'
 import NavigationBar from 'components/NavigationBar'
+import Pagination from 'components/Pagination'
+
+import classNames from 'classnames'
+import styles from './styles.css'
 
 export default class App extends React.Component {
   static propTypes = {
@@ -13,9 +17,10 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div className='container is-fluid is-fullheight is-marginless'>
+      <div className={classNames('container', 'is-fluid', 'is-fullheight', 'is-marginless', styles.App)}>
         <NavigationBar />
         {this.props.children}
+        <Pagination />
       </div>
     )
   }
