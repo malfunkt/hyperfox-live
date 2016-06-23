@@ -1,29 +1,26 @@
 /* TableHeader */
 
-import React from 'react'
+import React, {PropTypes} from 'react'
 
-export default class TableHeader extends React.Component {
-  sort (column) {
-    return function (event) {
-      const sortDir = this.props.sortDir
-      this.props.onSort(column, sortDir)
-    }.bind(this)
+export default function TableHeader (props) {
+  const columns = props.columns
+  const sort = (column) => {
+    return (event) => {
+      const sortDir = props.sortDir
+      props.onSort(column, sortDir)
+    }
   }
 
-  render () {
-    const columns = this.props.columns
-    const cell = function () {
-      return columns.map(function (c, i) {
-        return <th onClick={this.sort(c)} key={c}>
-                 {c}
-               </th>
-      }, this)
-    }.bind(this)
-
-    return (
+  return (
     <tr key='headerRow'>
-      {cell(this.props.item)}
+      {columns.map((c, i) => {
+        return <th onClick={sort(c)} key={c}>{c}</th>
+      })}
     </tr>
-    )
-  }
+  )
+}
+
+TableHeader.propTypes = {
+  columns: PropTypes.array,
+  sortDir: PropTypes.func
 }

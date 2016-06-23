@@ -1,23 +1,25 @@
 /* TableRow */
 
-import React from 'react'
+import React, {PropTypes} from 'react'
 
-export default class TableRow extends React.Component {
-  render () {
-    const columns = this.props.columns
-    const data = this.props.data
-    const td = function (item) {
-      return columns.map(function (c, i) {
-        return <td key={i}>
-                 {item[c]}
-               </td>
-      }, this)
-    }.bind(this)
+export default function TableRow (props) {
+  const columns = props.columns
+  const data = props.data
 
-    return (
+  const td = (item) => {
+    return columns.map((c, i) => {
+      return <td key={i}>{item[c]}</td>
+    })
+  }
+
+  return (
     <tr key={data}>
       {td(data)}
     </tr>
-    )
-  }
+  )
+}
+
+TableRow.propTypes = {
+  columns: PropTypes.array,
+  data: PropTypes.object
 }
