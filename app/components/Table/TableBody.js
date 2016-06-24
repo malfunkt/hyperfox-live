@@ -8,7 +8,7 @@ export default function TableBody (props) {
   const data = props.data
 
   return (
-    <tbody>
+    <tbody className={props.className}>
       {data.map((item, idx) => {
         return <TableRow key={idx} data={item} columns={columns} />
       })}
@@ -18,5 +18,6 @@ export default function TableBody (props) {
 
 TableBody.propTypes = {
   columns: PropTypes.array,
-  data: PropTypes.array
+  data: PropTypes.array,
+  className: PropTypes.string
 }

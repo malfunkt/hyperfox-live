@@ -4,6 +4,9 @@ import React, {PropTypes} from 'react'
 import TableHeader from './TableHeader'
 import TableBody from './TableBody'
 
+import styles from './styles.css'
+import classNames from 'classnames'
+
 export default class Table extends React.Component {
   static propTypes = {
     data: PropTypes.array
@@ -54,11 +57,11 @@ export default class Table extends React.Component {
     var data = this.state.data
 
     return (
-      <table className='table is-marginless'>
-        <thead>
+      <table className={classNames('table', 'is-marginless', styles.Table)}>
+        <thead className={styles.Table__TableHead}>
           <TableHeader onSort={this.sort} columns={columns} />
         </thead>
-        <TableBody data={data} columns={columns} />
+        <TableBody data={data} columns={columns} className={styles.Table__TableBody} />
       </table>
     )
   }
