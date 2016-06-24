@@ -26,7 +26,8 @@ const HyperfoxLive = {
         'cross-env',
         'express',
         'minimist',
-        'sanitize.css'
+        'sanitize.css',
+        'bulma'
       ],
 
       /**
