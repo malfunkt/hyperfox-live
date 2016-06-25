@@ -60,6 +60,12 @@ const render = () => {
     document.getElementById('app')
   )
 }
+// Hot reloadable translation json files
+if (module.hot) {
+  module.hot.accept('./i18n', () => {
+    render(translationMessages)
+  })
+}
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {

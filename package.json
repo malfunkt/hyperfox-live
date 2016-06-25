@@ -11,6 +11,7 @@
   },
   "scripts": {
     "postinstall": "npm run build:dll",
+    "intl": "babel-node --presets es2015 -- ./internals/scripts/getTranslations.js",
     "prebuild": "npm run test && npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p",
     "build:clean": "rimraf ./build/*",
@@ -52,7 +53,8 @@
       "cross-env",
       "express",
       "minimist",
-      "sanitize.css"
+      "sanitize.css",
+      "bulma"
     ],
     "include": [
       "core-js",
@@ -87,6 +89,7 @@
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.5",
     "babel-loader": "^6.2.4",
