@@ -11,7 +11,7 @@ import React from 'react'
 
 describe('<NavigationBar />', () => {
   it('should render the Logo', () => {
-    const navLogo = (<Logo className={styles.Logo} width={"65px"} height={"65px"} />)
+    const navLogo = (<Logo className={styles.Logo} width={"38px"} height={"38px"} />)
     const renderedComponent = shallow(
       <NavigationBar />
     )
