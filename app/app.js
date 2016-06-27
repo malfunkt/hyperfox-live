@@ -14,7 +14,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import useScroll from 'react-router-scroll'
+import FontFaceObserver from 'fontfaceobserver';
+import { useScroll } from 'react-router-scroll';
 import configureStore from './store'
 
 // Import Language Provider
@@ -25,6 +26,15 @@ import { translationMessages } from './i18n'
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 // import 'sanitize.css/lib/sanitize.css'
 import 'bulma/css/bulma.css'
+
+const openSansObserver = new FontFaceObserver('Open Sans', {});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+openSansObserver.load().then(() => {
+  document.body.classList.add(styles.fontLoaded);
+}, () => {
+  document.body.classList.remove(styles.fontLoaded);
+})
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -69,9 +79,19 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
-  System.import('intl').then(render)
+  (new Promise((resolve) => {
+    resolve(System.import('intl'));
+  }))
+    .then(() => Promise.all([
+      System.import('intl/locale-data/jsonp/en.js'),
+      System.import('intl/locale-data/jsonp/de.js'),
+    ]))
+    .then(() => render(translationMessages))
+    .catch((err) => {
+      throw err;
+    });
 } else {
-  render()
+  render(translationMessages);
 }
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
