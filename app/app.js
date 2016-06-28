@@ -25,6 +25,7 @@ import { translationMessages } from './i18n'
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 // import 'sanitize.css/lib/sanitize.css'
+import styles from 'containers/App/styles.css';
 import 'bulma/css/bulma.css'
 
 const openSansObserver = new FontFaceObserver('Open Sans', {});

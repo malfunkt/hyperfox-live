@@ -7,7 +7,7 @@ export default function Pagination () {
     <footer className={styles.Pagination}>
       <div className='container'>
         <nav className='pagination'>
-          <a clclassNameass='button'>Previous</a>
+          <a className='button'>Previous</a>
           <a className='button'>Next page</a>
           <ul>
             <li>
