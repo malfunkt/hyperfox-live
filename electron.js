@@ -11,7 +11,7 @@ function createWindow () {
     titleBarStyle: 'hidden',
     title: 'Hyperfox'
   })
-  mainWindow.loadURL(`http://lolcathost:3000`)
+  mainWindow.loadURL(`file://${__dirname}/build/index.html`)
   mainWindow.webContents.openDevTools()
   mainWindow.on('closed', function () {
     mainWindow = null

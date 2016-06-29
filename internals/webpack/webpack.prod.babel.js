@@ -18,15 +18,16 @@ module.exports = require('./webpack.base.babel')({
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js'
+    chunkFilename: '[name].[chunkhash].chunk.js',
+    publicPath: `file://${path.join(process.cwd(), 'build/')}`
   },
 
   // We use ExtractTextPlugin so we get a seperate CSS file instead
   // of the CSS being in the JS and injected as a style tag
-  cssLoaders: ExtractTextPlugin.extract(
-    'style-loader',
-    'css-loader?modules&importLoaders=1!postcss-loader'
-  ),
+  cssLoaders: ExtractTextPlugin.extract({
+    fallbackLoader: 'style-loader',
+    loader: 'css-loader?modules&importLoaders=1!postcss-loader'
+  }),
 
   // In production, we minify our CSS with cssnano
   postcssPlugins: [
