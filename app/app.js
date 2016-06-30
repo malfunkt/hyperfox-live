@@ -12,7 +12,7 @@ import 'file?name=[name].[ext]!./manifest.json'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
+import { applyRouterMiddleware, Router, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
@@ -48,7 +48,7 @@ const store = configureStore(initialState, browserHistory)
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
 import { selectLocationState } from 'containers/App/selectors'
-const history = syncHistoryWithStore(browserHistory, store, {
+const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState: selectLocationState()
 })
 
