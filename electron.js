@@ -9,7 +9,8 @@ function createWindow () {
     width: 800,
     height: 600,
     titleBarStyle: 'hidden',
-    title: 'Hyperfox'
+    title: 'Hyperfox',
+    icon: __dirname + '/electron/hyperfox-icon.ico',
   })
   mainWindow.loadURL(`file://${__dirname}/build/index.html`)
   mainWindow.webContents.openDevTools()
