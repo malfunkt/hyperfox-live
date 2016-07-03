@@ -2,6 +2,7 @@
   "name": "hyperfox-live",
   "version": "2.0.0",
   "description": "",
+  "main": "electron.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/xiam/hyperfox-live.git"
@@ -12,12 +13,13 @@
   "scripts": {
     "postinstall": "npm run build:dll",
     "intl": "babel-node --presets es2015 -- ./internals/scripts/getTranslations.js",
+    "prebuild": "rimraf ./build/*",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p",
-    "build:clean": "rimraf ./build/*",
     "build:dll": "node ./internals/scripts/dependencies.js",
-    "package": "electron-packager ./ hyperfox --platform darwin --out ~/Desktop/hyperfox --overwrite --icon=./electron/hyperfox-icon.icns",
-    "start": "cross-env NODE_ENV=development node server",
-    "start:electron": "electron ./electron.js",
+    "prepackage": "npm run build",
+    "package": "node ./electron/package.js",
+    "start": "electron ./electron.js",
+    "start:development": "cross-env NODE_ENV=development node server",
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
     "test": "cross-env NODE_ENV=test karma start internals/testing/karma.conf.js --single-run",
