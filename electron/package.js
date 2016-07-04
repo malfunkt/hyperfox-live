@@ -1,8 +1,15 @@
 var packager = require('electron-packager')
+var logger = require('../server/logger')
+
+var platform
+if (process.argv.indexOf("-p") !== -1) {
+  platform = process.argv[process.argv.indexOf('-p') + 1]
+}
+
 var packageOptions = {
   dir: './',
   name: 'Hyperfox',
-  platform: 'darwin',
+  platform: platform,
   out: './releases',
   overwrite: true,
   icon: './electron/hyperfox-icon.icns',
@@ -17,7 +24,9 @@ var packageOptions = {
 
 packager(packageOptions, function done_callback (err, appPaths) {
   if (err) {
-    console.log('Error:', err)
+    logger.error(err.message)
   }
-  console.log(appPaths)
+  if (appPaths !== undefined ) {
+    logger.electron(appPaths)
+  }
 })

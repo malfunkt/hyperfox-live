@@ -12,7 +12,7 @@ const app = express()
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
   publicPath: '/'
-})
+})<
 
 // get the intended port number, use port 3000 if not provided
 const port = argv.port || process.env.PORT || 3000
