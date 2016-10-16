@@ -18,7 +18,8 @@ var packageOptions = {
     'coverage',
     'releases',
     'internals',
-    'server'
+    'server',
+    'node_modules'
   ]
 }
 
