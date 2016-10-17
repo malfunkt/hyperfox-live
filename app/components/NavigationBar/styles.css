@@ -1,5 +1,5 @@
 .NavigationBar{
-  background-color: #455a64;
+  background: #455a64 !important;
   padding: 0 10px;
   &__Logo{
     &__Live{
