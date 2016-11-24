@@ -12,9 +12,9 @@ import { selectLocale } from './selectors'
 export class LanguageProvider extends React.Component {
   render () {
     return (
-    <IntlProvider locale={this.props.locale} messages={this.props.messages[this.props.locale]}>
-      {this.props.children}
-    </IntlProvider>
+      <IntlProvider locale={this.props.locale} messages={this.props.messages[this.props.locale]}>
+        {this.props.children}
+      </IntlProvider>
     )
   }
 }

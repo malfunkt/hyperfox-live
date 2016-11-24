@@ -8,10 +8,6 @@ export default class Notification extends React.Component {
     message: PropTypes.object
   }
 
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     const alertStyles = {
       normal: '',
@@ -22,7 +18,7 @@ export default class Notification extends React.Component {
     }
     return (
       <div className={classNames('notification', alertStyles[this.props.alertStyle])}>
-        <button className='delete'></button>
+        <button className='delete' />
         <FormattedMessage {...this.props.message} />
       </div>
     )

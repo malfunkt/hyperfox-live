@@ -27,7 +27,7 @@ module.exports = (config) => {
     ],
 
     preprocessors: {
-      ['./test-bundler.js']: ['webpack', 'sourcemap']
+      './test-bundler.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,

@@ -2,7 +2,7 @@ var packager = require('electron-packager')
 var logger = require('../server/logger')
 
 var platform
-if (process.argv.indexOf("-p") !== -1) {
+if (process.argv.indexOf('-p') !== -1) {
   platform = process.argv[process.argv.indexOf('-p') + 1]
 }
 
@@ -23,11 +23,11 @@ var packageOptions = {
   ]
 }
 
-packager(packageOptions, function done_callback (err, appPaths) {
+packager(packageOptions, function doneCallback (err, appPaths) {
   if (err) {
     logger.error(err.message)
   }
-  if (appPaths !== undefined ) {
+  if (appPaths !== undefined) {
     logger.electron(appPaths)
   }
 })

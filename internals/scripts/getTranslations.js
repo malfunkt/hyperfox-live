@@ -99,7 +99,7 @@ const extractFromFile = async (fileName) => {
   )
 
   // Make the directory if it doesn't exist, especially for first run
-  mkdir('-p', 'app/translations')
+  // mkdir('-p', 'app/translations')
   logDivider()
   for (const locale of locales) {
     const translationFileName = `app/translations/${locale}.json`

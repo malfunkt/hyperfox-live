@@ -1,5 +1,5 @@
 const electron = require('electron')
-
+const path = require('path')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
@@ -9,7 +9,7 @@ function createWindow () {
     width: 1200,
     height: 600,
     title: 'Hyperfox',
-    icon: __dirname + '/electron/hyperfox-icon.ico',
+    icon: path.join(__dirname, '/electron/hyperfox-icon.ico')
   })
   mainWindow.loadURL(`file://${__dirname}/build/index.html`)
   mainWindow.on('closed', function () {
