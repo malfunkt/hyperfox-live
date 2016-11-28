@@ -1,36 +1,42 @@
-# live.hyperfox.org
+# [live.hyperfox.org](https://github.com/xiam/hyperfox-live)
+> This is the source code of the [Hyperfox][1]'s [live visualization tool][2].
 
-This is the source code of the [Hyperfox][1]'s [live visualization tool][2].
 
 ## Requisites
 
-* ruby
-* rubygems
-* nodejs (I know, I know...)
-* npm
+* Node.js (>=6)
+* npm (>=3)
 
 ## Initial setup
 
 ```
-gem install compass
-
-cd html
 npm install
-
-sudo npm install -g bower
-sudo npm install -g grunt-cli
-
-bower update
-npm install grunt-contrib-compass --save-dev
-
 ```
 
 ## Development
 
+```bash
+# start a webpack server for development
+# at http://localhost:3000
+npm run start:development
 ```
-cd html
-grunt serve
+
+## Build
+See [electron-packager](https://github.com/electron-userland/electron-packager) for electron package requirements.
+
+```bash
+# create the webpack build in the `build` folder
+npm run build
+# create an electron package for all the platforms
+npm run package
+# create an electron package for osx
+npm run package:osx
+# create an electron package for windows
+npm run package:win
+# create an electron package for linux
+npm run package:linux
 ```
+
 
 # License (MIT)
 
