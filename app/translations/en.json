@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hyperfox.components.NavigationBar.search.message",
+    "defaultMessage": "Search.",
+    "message": ""
+  },
+  {
+    "id": "hyperfox.containers.Logger.Notification.noconnected.message",
+    "defaultMessage": "Could not connect to the Hyperfox API. Seems like hyperfox is not running on your local box.",
+    "message": ""
+  },
+  {
+    "id": "hyperfox.containers.Logger.Notification.nodata.message",
+    "defaultMessage": "No data to show yet.",
+    "message": ""
+  }
+]

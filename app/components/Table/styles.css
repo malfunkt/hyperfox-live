@@ -1,0 +1,9 @@
+.Table{
+  table-layout: fixed;
+  &__TableHead{
+    background-color: #666;
+  }
+  &__TableBody{
+    overflow: scroll;
+  }
+}

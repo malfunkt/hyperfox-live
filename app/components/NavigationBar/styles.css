@@ -1,0 +1,30 @@
+.NavigationBar{
+  background: #455a64 !important;
+  padding: 0 10px;
+  &__Logo{
+    &__Live{
+      font-size: 20px;
+      color: #fff;
+      padding: 0;
+    }
+  }
+  &__Search{
+    &__Input{
+      .fa{
+        font-size: 15px !important;
+      }
+    }
+  }
+}
+
+.Logo{
+  path{
+    fill: #ed6c63;
+    transition: fill .4s linear;
+  }
+  &:hover{
+    path{
+      fill: #DB0F2E;
+    }
+  }
+}
